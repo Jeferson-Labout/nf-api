@@ -2,7 +2,10 @@ package com.jldev.apinf.entity;
 
 
 
+import br.com.swconsultoria.nfe.dom.enuns.AmbienteEnum;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,6 +21,8 @@ public class Empresa {
 	private Long id;
 	private String cnpj;
 	private String razaoSocial;
+	@Enumerated(EnumType.STRING)
+	private AmbienteEnum ambiente;
 	private byte[] certificado;
 	private String senhaCertificado;
 	private String nsu;
