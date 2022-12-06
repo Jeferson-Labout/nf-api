@@ -2,6 +2,10 @@ package com.jldev.apinf.entity;
 
 
 
+
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import br.com.swconsultoria.nfe.dom.enuns.AmbienteEnum;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -20,9 +24,11 @@ public class Empresa {
 	@GeneratedValue(generator = "NotaEntradaSeq", strategy = GenerationType.SEQUENCE)
 	private Long id;
 	private String cnpj;
+	private String uf;
 	private String razaoSocial;
 	@Enumerated(EnumType.STRING)
-	private AmbienteEnum ambiente;
+	private AmbienteEnum ambiente;	
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private byte[] certificado;
 	private String senhaCertificado;
 	private String nsu;

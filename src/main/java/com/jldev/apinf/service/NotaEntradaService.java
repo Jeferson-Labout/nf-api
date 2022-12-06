@@ -21,28 +21,26 @@ public class NotaEntradaService {
 		this.repository = repository;
 	}
 
-	private NotaEntrada salvar(NotaEntrada NotaEntrada) {
-		validar(NotaEntrada);
-		log.info("Salvando NotaEntrada");
-		return repository.save(NotaEntrada);
+	public void salvar(List<NotaEntrada> notaEntrada) {
+		repository.saveAll(notaEntrada);
 
 	}
 
-	private void deletar(Long idNotaEntrada) {
+	public void deletar(Long idNotaEntrada) {
 		
 		repository.deleteById(idNotaEntrada);
 		
 	}
 	
 	
-	private List<NotaEntrada>listarTudo(){
+	public List<NotaEntrada>listarTudo(){
 		return repository.findAll();
 		
 	}
 	
 	
 	
-	private void validar(NotaEntrada NotaEntrada) {
+	public void validar(NotaEntrada NotaEntrada) {
 		// TODO Auto-generated method stub
 		Optional.ofNullable(NotaEntrada.getChave()).orElseThrow(() -> new SistemaException("Campo Cnpj Obrigatório"));
 	}

@@ -69,14 +69,14 @@ public class EmpresaController {
 	
 	
 	@DeleteMapping(value="{id}")
-	public ResponseEntity<?> deletar(@PathVariable Long idEmpresa) {
+	public ResponseEntity<?> deletar(@PathVariable("id") Long idEmpresa) {
 		try {
 			empresaService.deletar(idEmpresa);
-			return ResponseEntity.ok().body("Empresa deletada com Sucesso");
+			return ResponseEntity.ok("Empresa deletada com Sucesso");
 
 		} catch (Exception e) {
-			log.error("Error ao obter Empresa", e);
-			return ResponseEntity.badRequest().body(e.getMessage());
+			log.error("Error ao deletar Empresa", e);
+			return ResponseEntity.badRequest().body("Error ao deletar empresa: "+e.getMessage());
 		}
 
 	}
